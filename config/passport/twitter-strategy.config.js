@@ -6,11 +6,13 @@ const util            = require('util');
 const db = require('../../services/db.service');
 const User = require('../../models/user.model');
 
+let callbackUrl = process.env.NODE_ENV === 'production' ? process.env.TWITTER_CALLBACK_URL : 'http://localhost:3000/auth/twitter/callback';
+
 module.exports = function() {
   passport.use('twitter', new TwitterStrategy({
     consumerKey: process.env.TWITTER_CONSUMER_KEY,
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-    callbackURL: 'http://localhost:3000/auth/twitter/callback'
+    callbackURL: callbackUrl
   },
   function(token, tokenSecret, profile, done) {
     User.findOne({twitterId: profile['id']}, (err, user) => {
