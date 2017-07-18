@@ -13,6 +13,7 @@ const addImage    = require('../controllers/add-image.controller');
 const dashboard   = require('../controllers/dashboard.controller');
 const deleteImage = require('../controllers/dashboard-delete-image.controller');
 const home        = require('../controllers/home.controller');
+const userImages  = require('../controllers/user-images.controller');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -20,7 +21,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use((req, res, next) => {
   res.locals.images = [];
   res.locals.myApp = {
-    name: 'Pintarest clone',
+    name: 'Cards Jump',
     user: req.user,
     errors: req.flash('error'),
     infos: req.flash('info'),
@@ -36,6 +37,8 @@ router.get('/', home);
 router.get('/dashboard', dashboard);
 
 router.get('/dashboard/delete/:id', deleteImage);
+
+router.get('/users/:id', userImages);
 
 router.get('/login', (req, res, next) => {
   res.render('login');

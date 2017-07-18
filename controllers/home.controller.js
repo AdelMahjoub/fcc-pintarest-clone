@@ -8,11 +8,11 @@ module.exports = function(req, res, next) {
       path: 'owner',
       select: {__v: 0, password: 0, email: 0}
     })
-    .sort('date')
+    .sort('-date')
     .exec((err, images) => {
       if(err || !images) {
         return res.render('index');
       }
-      return res.render('index', {images: images})
+      return res.render('index', {images: images.slice(0, 20)})
     });
 }

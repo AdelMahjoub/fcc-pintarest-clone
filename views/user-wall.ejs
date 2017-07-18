@@ -1,0 +1,37 @@
+<%- include partials/header %>
+
+<section class="section">
+
+   <div class="columns">
+    <div class="column is-6">
+
+    <% if(myApp['errors']) { %>
+      <% myApp['errors'].forEach(function(error) { %>
+        <%- include partials/inc/notification %>
+      <% }) %>
+    <% } %>
+
+    <% if(myApp['infos']) { %>
+      <% myApp['infos'].forEach(function(info) { %>
+        <%- include partials/inc/info %>
+      <% }) %>
+    <% } %>
+
+    </div>
+  </div>
+
+  <section id="wall">
+
+    <% if(images && images.length > 0) { %>
+    <% images.forEach(function(image, index) { %>
+
+    <%- include partials/inc/image-card %>
+    
+    <% }); %>
+    <% } %>
+
+  </section><!-- end of wall -->
+
+</section>
+
+<%- include partials/footer %>

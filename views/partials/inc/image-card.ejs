@@ -18,10 +18,15 @@
 
             <div class="media-content">
               <p class="title is-4"><%= image['title'] %></p>
-              <p class="subtitle is-6">@<%= image['owner']['username'] %></p>
             </div>
 
           </div><!-- end of media -->
+
+          <div class="content">
+            <a href="/users/<%= image['owner']['_id'].toString() %>">@<%= image['owner']['username'] %></a>
+            <br>
+            <small><%= image['createdAt'].toLocaleDateString() %></small>
+          </div>
 
         </div><!-- end of card content -->
 

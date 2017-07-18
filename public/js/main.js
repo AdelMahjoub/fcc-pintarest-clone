@@ -1,6 +1,8 @@
 function renderGrid() {
   
-  const wall   = document.getElementById('wall');
+  let fallbackSrc = 'http://via.placeholder.com/256x256';
+  let images = document.querySelectorAll('.image img');
+  const wall = document.getElementById('wall');
   const blocks = document.getElementById('wall') ? document.getElementById('wall').children : [];
   const SPACE = 20;
   const COLUMNS = 5;
@@ -19,6 +21,16 @@ function renderGrid() {
       x = (blocks[i - 1].offsetLeft + blocks[i - 1].offsetWidth) + SPACE;
       blocks[i].style.left = `${x}px`;
     }
+  }
+
+  if(images) {
+    images.forEach(image => {
+      image.addEventListener('error', f = function(e) {
+        image.setAttribute('src', fallbackSrc);
+        image.removeEventListener('error', f);
+        renderGrid();
+      },false);
+    });
   }
 
 }
