@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "a pintarest clone",
   "engines": {
-    "node": "6.11.1"
+    "node": "6.11.1",
+    "npm": "5.2.0"
   },
   "main": "server.js",
   "scripts": {
@@ -14,8 +15,6 @@
   "keywords": [
     "nodejs",
     "expressjs",
-    "masonryjs",
-    "jquery",
     "ejs",
     "mongodb"
   ],
@@ -36,8 +35,6 @@
     "forever": "^0.15.3",
     "helmet": "^3.6.1",
     "mongoose": "^4.11.3",
-    "morgan": "^1.8.2",
-    "node-cache": "^4.1.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
