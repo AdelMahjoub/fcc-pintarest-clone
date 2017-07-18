@@ -1,0 +1,62 @@
+<%- include partials/header %>
+
+<section class="section">
+  
+  <div class="columns">
+    <div class="column is-6">
+      <p class="field">
+        <button 
+        data-target="modal"
+        class="button is-outlined is-primary">
+          <span class="icon is-small">
+            <i class="fa fa-plus"></i>
+          </span>
+          <span>Add image</span>
+        </button>
+      </p>
+    </div>
+    <div class="column is-6">
+
+    <% if(myApp['errors']) { %>
+      <% myApp['errors'].forEach(function(error) { %>
+        <%- include partials/inc/notification %>
+      <% }) %>
+    <% } %>
+
+    <% if(myApp['infos']) { %>
+      <% myApp['infos'].forEach(function(info) { %>
+        <%- include partials/inc/info %>
+      <% }) %>
+    <% } %>
+
+    </div>
+  </div>
+
+
+  <section id="wall">
+
+    <% if(images && images.length > 0) { %>
+    <% images.forEach(function(image, index) { %>
+
+    <%- include partials/inc/image-card %>
+    
+    <% }); %>
+    <% } %>
+
+  </section><!-- end of wall -->
+
+</section>
+
+<%- include partials/modal %>
+
+<script>
+  $('button[data-target="modal"]').on('click', function(e) {
+    $('.modal').fadeToggle(300).css('display', 'flex');
+  });
+
+  $('.modal-background').on('click', function(e) {
+    $('.modal').fadeOut(300);
+  })
+</script>
+
+<%- include partials/footer %>

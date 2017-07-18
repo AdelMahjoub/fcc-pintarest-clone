@@ -1,0 +1,12 @@
+<div class="notification is-info">
+  <button class="delete" data-target="info-notification"></button>
+  <div class="content">
+    <p><%= info %></p>
+  </div>
+</div>
+
+<script>
+$('button[data-target="info-notification"]').on('click', function(e) {
+  $(this).parent().fadeOut(500);
+});
+</script>

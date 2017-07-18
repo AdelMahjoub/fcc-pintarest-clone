@@ -1,0 +1,35 @@
+<%- include partials/header %>
+<section class="section level">
+  <div class="level-item">
+    <div class="column is-8">
+
+       <% if(myApp['errors']) { %>
+        <% myApp['errors'].forEach(error => { %>
+        
+        <%- include partials/inc/notification %>
+
+        <% }); %>
+      <% } %>
+
+      <form action="/login" method="POST">
+
+        <%- include partials/inc/username %>
+
+        <%- include partials/inc/password %>
+
+        <hr>
+
+        <div class="field is-clearfix">
+          <p class="control is-pulled-right">
+            <button type="submit" class="button is-primary">Login</button>
+          </p>
+        </div>
+
+      </form>
+
+      <%- include partials/inc/twitter-signin-btn %>
+      
+    </div>
+  </div>
+</section>
+<%- include partials/footer %>

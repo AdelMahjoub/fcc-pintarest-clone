@@ -1,0 +1,44 @@
+<%- include partials/header %>
+<section class="section level">
+  <div class="level-item">
+
+    <div class="column is-8">
+      <% if(myApp['errors']) { %>
+        <% myApp['errors'].forEach(error => { %>
+        
+        <%- include partials/inc/notification %>
+
+        <% }); %>
+      <% } %>
+      <form method="POST" action="/signup">
+
+        <%- include partials/inc/username %>
+
+        <%- include partials/inc/email %>
+
+        <%- include partials/inc/password %>
+
+        <%- include partials/inc/confirm-password %>
+
+        <hr>
+
+        <div class="field is-clearfix">
+          <p class="control is-pulled-right">
+            <button type="submit" class="button is-primary">Register</button>
+          </p>
+        </div>
+      
+      </form>
+
+      <%- include partials/inc/twitter-signin-btn %>
+
+    </div>
+  </div>
+</section>
+
+<script src="js/form-validation/email.validation.js"></script>
+<script src="js/form-validation/username.validation.js"></script>
+<script src="js/form-validation/password.validation.js"></script>
+<script src="js/form-validation/signup-form.validation.js"></script>
+
+<%- include partials/footer %>

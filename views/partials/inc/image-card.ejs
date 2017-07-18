@@ -1,0 +1,41 @@
+<!-- card container -->
+    <div class="brik">
+
+      <!-- card -->
+      <div class="card">
+
+        <!-- card image -->
+        <div class="card-image">
+          <figure class="image is-256x256">
+            <img src="<%= image['url'] %>">
+          </figure>
+        </div><!-- end of card image -->
+        
+        <!-- card content -->
+        <div class="card-content">
+          <!-- media -->
+          <div class="media">
+
+            <div class="media-content">
+              <p class="title is-4"><%= image['title'] %></p>
+              <p class="subtitle is-6">@<%= image['owner']['username'] %></p>
+            </div>
+
+          </div><!-- end of media -->
+
+        </div><!-- end of card content -->
+
+        <!-- card-footer -->
+        <div class="card-footer">
+          <% if(myApp['user'] && myApp['user']['_id'].toString() === image['owner']['_id'].toString()) { %>
+          <a href="/dashboard/delete/<%= image['_id'].toString() %>" class="card-footer-item">
+            <span class="icon is-small">
+              <i class="fa fa-trash"></i>
+            </span>
+          </a>
+          <% } %>
+        </div>
+
+      </div><!-- end of card  -->
+
+    </div><!-- end of card container -->

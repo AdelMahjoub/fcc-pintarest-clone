@@ -1,0 +1,130 @@
+<!-- Navbar -->
+  <div class="navbar container">
+
+    <!-- Left side of the navbar: always visible: logo and optional links-->
+    <div class="navbar-brand">
+
+      <a href="/" class="navbar-item"><%= myApp['name'] %></a>
+
+        <a class="navbar-item is-hidden-desktop" href="#" target="_blank">
+          <span class="icon is-small">
+            <i class="fa fa-github"></i>
+          </span>
+        </a>
+
+        <a class="navbar-item is-hidden-desktop" href="#" target="_blank">
+          <span class="icon is-small">
+            <i class="fa fa-bomb"></i>
+          </span>
+        </a>
+
+
+      <!-- hamburger icon: toggles the navbar menu on touch devices -->
+      <div class="navbar-burger burger" data-target="navbar-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div><!-- End of the left side of the navbar -->
+    
+    <!-- Menu: the right side of the navbar: hidden on touch devices, visible on desktop -->
+    <div class="navbar-menu">
+      
+      <!-- The left part of the menu -->
+      <div class="navbar-start">
+      
+        <a href="/" class="navbar-item">Home</a>
+
+        <div class="navbar-item is-hidden-touch">
+          <a href="" class="has-icon button is-outlined is-dark is-small">
+            <span class="icon is-small">
+              <i class="fa fa-github"></i>
+            </span>
+            <span>Github</span>
+          </a>
+        </div>
+
+        <div class="navbar-item is-hidden-touch">
+          <a href="" class="button is-outlined is-dark is-small">
+            <span class="icon is-small">
+              <i class="fa fa-bomb"></i>
+            </span>
+            <span>Glitch</span>
+          </a>
+        </div>
+
+      </div><!-- End of the left part of the menu -->
+
+      <!-- The right part of the menu -->
+      <div class="navbar-end">
+        
+        <% if(myApp['user']) { %>
+
+        <a href="/dashboard" class="navbar-item"><%= myApp['user']['username'] %></a>
+        
+        <% } %>
+
+        <!-- dropdown menu -->
+        <div class="navbar-item has-dropdown is-hoverable">
+        
+          <!-- a link as a sibling of a dropdown with an arrow -->
+          <a class="navbar-link is-active">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+
+          <!-- the dopdown menu: can include navbar items and dividers -->
+          <div class="navbar-dropdown">
+            
+            <% if(!myApp['user']) { %>
+
+            <a href="/login" class="navbar-item">
+              <p class="field">
+                <span class="icon is-small">
+                  <i class="fa fa-sign-in"></i>
+                </span>
+                <span> Login</span>
+              </p>
+            </a>
+            
+            <hr class="navbar-divider">
+
+            <a href="/signup" class="navbar-item">
+              <p class="field">
+                <span class="icon is-small">
+                  <i class="fa fa-user-plus"></i>
+                </span>
+                <span> Signup</span>
+              </p>
+            </a>
+
+            <% } else { %>
+            
+            <a href="/logout" class="navbar-item">
+              <p class="field">
+                <span class="icon is-small">
+                  <i class="fa fa-power-off"></i>
+                </span>
+                <span> Logout</span>
+              </p>
+            </a>
+
+            <% } %>
+
+          </div>
+
+        </div><!-- end of dropdown menu -->
+
+      </div><!-- End of the right part of the menu -->
+
+    </div><!-- End of the right side of the navbar -->
+
+  </div><!-- End of the navbar -->
+
+  <script>
+    $('[data-target="navbar-menu"]').on('click', function(e) {
+      $('.navbar-menu').slideToggle(500);
+    });
+  </script>

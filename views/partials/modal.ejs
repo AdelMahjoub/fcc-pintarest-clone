@@ -1,0 +1,71 @@
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <!-- modal header -->
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add an Image</p>
+      <button class="delete" data-target="modal"></button>
+    </header>
+    <!-- modal body -->
+    <section class="modal-card-body">
+      <div class="content">
+        <form id="image-form" action="/add-image" method="POST">
+          <!-- image url field -->
+          <div class="field">
+            <label for="image-url" class="label">Image url</label>
+            <p class="control has-icons-left has-icons-right">
+              
+              <input 
+              id="image-url" 
+              type="url" class="input" 
+              name="imageUrl" 
+              placeholder="image url"
+              required
+              autofocus>
+              
+              <span class="icon is-small is-left">
+                <i class="fa fa-picture-o"></i>
+              </span>
+
+            </p>
+            
+            <p class="help"></p>
+          </div>
+          <!-- title title field -->
+          <div class="field">
+            <label for="title" class="label">Title</label>
+            <p class="control has-icons-left has-icons-right">
+              
+              <input 
+              id="title" 
+              type="text"
+              class="input" 
+              name="imageTitle" 
+              placeholder="title"
+              required>
+              
+              <span class="icon is-small is-left">
+                <i class="fa fa-font"></i>
+              </span>
+
+            </p>
+            <p class="help"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- modal footer -->
+    <footer class="modal-card-foot">
+      <button 
+      id="image-submit"
+      form="image-form"
+      type="submit" 
+      class="button is-success">Save</button>
+      <button
+      class="button"
+      data-target="modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+
+<script src="js/form-validation/image.validation.js"></script>

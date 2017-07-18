@@ -1,0 +1,12 @@
+<div class="notification is-danger">
+  <button class="delete" data-target="error-notification"></button>
+  <div class="content">
+    <p><%= error %></p>
+  </div>
+</div>
+
+<script>
+$('button[data-target="error-notification"]').on('click', function(e) {
+  $(this).parent().fadeOut(500);
+});
+</script>
