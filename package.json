@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "a pintarest clone",
   "engines": {
-    "node": "6.11.1",
-    "npm": "5.2.0"
+    "node": "6.11.1"
   },
   "main": "server.js",
   "scripts": {
@@ -32,6 +31,7 @@
     "dotenv": "^4.0.0",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
+    "express-minify": "^0.2.0",
     "express-session": "^1.15.3",
     "forever": "^0.15.3",
     "helmet": "^3.6.1",

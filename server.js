@@ -13,6 +13,8 @@ const cookiesConfig = require('./config/cookies.config');
 const db            = require('./services/db.service');
 const passport      = require('passport');
 const flash         = require('connect-flash');
+const minify        = require('express-minify');
+const zlib          = require('zlib');
 
 const app = express();
 
@@ -22,7 +24,6 @@ app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(compression());
 app.use(helmet());
 
 app.use(cookieParer(process.env.SESS_SECRET));
@@ -38,6 +39,14 @@ app.use(session({
   saveUninitialized: true,
   secret: process.env.SESS_SECRET,
   store: new MongoStore({mongooseConnection: db.connection})
+}));
+
+app.use(compression({
+  level: zlib.Z_BEST_COMPRESSION,
+  strategy: zlib.Z_DEFAULT_STRATEGY
+}));
+app.use(minify({
+  cache: path.join(__dirname, 'cache')
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
